@@ -141,12 +141,17 @@ module Play
       @songs = History.limit(100).order('created_at desc').collect(&:song)
       mustache :play_history
     end
-    
+
     get "/rdio/:track_id/done" do
       Play::Library.instance("Play::Rdio::Library").quit_browser(params[:track_id])
       "thanks!"
     end
-    
+
+    get "/rdio/sync" do
+      Play::Library.instance("Play::Rdio::Library").sync_tracks
+      redirect request.referer
+    end
+
     get "/rdio/:track_id" do
       @track_id = params[:track_id]
       play = YAML::load(File.open("config/play.yml"))
@@ -160,7 +165,7 @@ module Play
       @user = User.where(:login => params[:login]).first
       mustache :profile
     end
-    
+
 
   end
 end

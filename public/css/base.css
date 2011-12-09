@@ -167,3 +167,11 @@ a:hover{
 .bio{
   line-height: 1.5em;
 }
+
+/*
+ * SYNC TO RDIO
+ */
+.sync_rdio{
+  margin: 20px auto;
+  width: 600px;
+}
