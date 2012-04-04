@@ -149,7 +149,7 @@ module Play
 
     get "/rdio/sync" do
       Play::Library.instance("Play::Rdio::Library").sync_tracks
-      redirect request.referer
+      "ok tracks sync'd!"
     end
 
     get "/rdio/:track_id" do
