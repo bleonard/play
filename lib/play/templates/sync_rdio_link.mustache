@@ -1,0 +1,10 @@
+<p class="syncRdio">
+  Think there are some tracks missing from Rdio? Try <a href="/rdio/refresh">syncing tracks from Rdio</a>
+</p>
+<script type="text/javascript">
+$(".syncRdio a").click(function(){
+  $.get("/rdio/refresh", function(){
+    window.location.reload();
+  });
+});
+</script>
